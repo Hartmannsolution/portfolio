@@ -1,0 +1,21 @@
+{{ $projectPage := .Site.GetPage "/project" }}
+
+{{ if $projectPage }}
+  <article class="max-w-full prose dark:prose-invert">
+    {{ with $projectPage.Title }}
+      <header>
+        <h1>{{ . | emojify }}</h1>
+      </header>
+    {{ end }}
+    <section class="w-full">{{ $projectPage.Content }}</section>
+  </article>
+{{ else }}
+  <article class="max-w-full prose dark:prose-invert">
+    <header>
+      <h1>Project page not found</h1>
+    </header>
+    <section class="w-full">
+      <p>Create <code>content/project.md</code> to render it on the homepage.</p>
+    </section>
+  </article>
+{{ end }}
